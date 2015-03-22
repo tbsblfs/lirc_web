@@ -21,7 +21,8 @@
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
     "jsdom": "*",
-    "grunt-develop": "~0.3.0"
+    "grunt-develop": "~0.3.0",
+    "request": "~2.53.0"
   },
   "scripts": {
     "test": "make test"
