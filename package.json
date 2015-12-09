@@ -3,7 +3,10 @@
   "description": "A NodeJS / Express app that creates a web UI + API for LIRC",
   "main": "app.js",
   "version": "0.0.8",
-  "private": true, 
+  "private": true,
+  "dependencies": {
+      "lodash": "*"
+  },
   "devDependencies": {
     "mocha": "*",
     "should": "7.1.0",
