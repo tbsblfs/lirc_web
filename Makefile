@@ -7,6 +7,7 @@ test:
 		--require test/common.js \
 		--reporter $(REPORTER) \
 		--growl \
+        --recursive \
 		$(TESTS)
 
 .PHONY: test bench

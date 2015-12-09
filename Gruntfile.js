@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
-
+    var STATIC_FOLDER = 'lib/app/static/'
+    
     // Load some tasks
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -12,29 +13,29 @@ module.exports = function(grunt) {
 
         uglify: {
             app: {
-                src: ['static/js/vendor/zepto.min.js',
-                      'static/js/vendor/zepto.touch.js',
-                      'static/js/vendor/fastclick.js',
-                      'static/js/app/*.js'],
-                dest: 'static/js/compiled/app.js'
+                src: [STATIC_FOLDER + 'js/vendor/zepto.min.js',
+                      STATIC_FOLDER + 'js/vendor/zepto.touch.js',
+                      STATIC_FOLDER + 'js/vendor/fastclick.js',
+                      STATIC_FOLDER + 'js/app/*.js'],
+                dest: STATIC_FOLDER + 'js/compiled/app.js'
             }
         },
 
         less: {
             app: {
                 files: {
-                    "static/css/compiled/app.css": "static/css/app.less"
+                    "lib/app/static/css/compiled/app.css": "lib/app/static/css/app.less"
                 }
             }
         },
 
         watch: {
             scripts: {
-                files: ['static/js/app/*.js', 'static/js/vendor/*.js'],
+                files: [STATIC_FOLDER + 'js/app/*.js', STATIC_FOLDER + 'js/vendor/*.js'],
                 tasks: ['uglify:app']
             },
             stylesheets: {
-                files: ['static/css/*.less'],
+                files: [STATIC_FOLDER + 'css/*.less'],
                 tasks: ['less']
             }
         },
