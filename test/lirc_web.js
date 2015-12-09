@@ -1,4 +1,4 @@
-var app = require('../lib/app'),
+var app = require('_/app'),
     assert = require('assert'),
     request = require('supertest'),
     sinon = require('sinon');
