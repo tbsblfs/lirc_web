@@ -1,15 +1,6 @@
 {
-  "repeaters": {
-    "SonyTV": {
-      "VolumeUp": true,
-      "VolumeDown": true
-    }
-  },
-  "remoteLabels": {
-    "LircNamespace": "LIRC namespace"
-  },
-  "remotes": {  
-      "Yamaha": [
+    "remotes": {
+        "Yamaha": [
         "Power",
         "Xbox360",
         "Wii",
@@ -17,14 +8,14 @@
         "VolumeDown",
         "DTV/CBL"
       ],
-      "SonyTV": [
+        "SonyTV": [
         "Power",
         "VolumeUp",
         "VolumeDown",
         "ChannelUp",
         "ChannelDown"
       ],
-      "Xbox360": [
+        "Xbox360": [
         "OpenClose",
         "FancyButton",
         "OnOff",
@@ -50,12 +41,12 @@
         "A",
         "B"
       ],
-      "LircNamespace": [
+        "LircNamespace": [
         "KEY_POWER",
         "KEY_VOLUMEUP",
         "KEY_VOLUMEDOWN",
         "KEY_CHANNELUP",
         "KEY_CHANNELDOWN"
       ]
-  }
+    }
 }
