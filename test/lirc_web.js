@@ -25,7 +25,7 @@ describe('lirc_web', function() {
         });
 
         it('should have GET route for JSON list of commands for remote', function(done) {
-            assert(request(app).get('/remotes/Xbox360.json').expect(200, done));
+            assert(request(app).get('/remotes/lirc_Xbox360.json').expect(200, done));
         });
 
         it('should have GET route for JSON list of commands for macro', function(done) {
@@ -39,15 +39,15 @@ describe('lirc_web', function() {
 
         // Sending commands
         it('should have POST route for sending a command', function(done) {
-            assert(request(app).post('/remotes/tv/power').expect(200, done));
+            assert(request(app).post('/remotes/lirc_tv/power').expect(200, done));
         });
 
         it('should have POST route to start repeatedly sending a command', function(done) {
-            assert(request(app).post('/remotes/tv/volumeup/send_start').expect(200, done));
+            assert(request(app).post('/remotes/lirc_tv/volumeup/send_start').expect(200, done));
         });
 
         it('should have POST route to stop repeatedly sending a command', function(done) {
-            assert(request(app).post('/remotes/tv/volumeup/send_stop').expect(200, done));
+            assert(request(app).post('/remotes/lirc_tv/volumeup/send_stop').expect(200, done));
         });
 
 
@@ -96,7 +96,7 @@ describe('lirc_web', function() {
 
         it('should return a list of all commands for a remote when /remotes/:remote.json is accessed', function(done) {
             request(app)
-            .get('/remotes/Xbox360.json')
+            .get('/remotes/lirc_Xbox360.json')
             .end(function(err, res) {
                 assert.equal(res.status, 200);
                 done();
