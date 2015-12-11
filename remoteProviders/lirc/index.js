@@ -31,8 +31,14 @@ exports.init = function () {
 
     return {
         remotes: lirc_node.remotes,
-        sendStart: lirc_node.irsend.send_start,
-        sendStop: lirc_node.irsend.send_stop,
-        sendOnce: lirc_node.irsend.send_once
+        sendStart: function(remote, key, cb) {
+            lirc_node.irsend.send_start(remote, key, cb);
+        },
+        sendStop: function(remote, key, cb) {
+            lirc_node.irsend.send_stop(remote, key, cb);
+        },
+        sendOnce: function(remote, key, cb) {
+            lirc_node.irsend.send_once(remote, key, cb);
+        }
     }
 }
