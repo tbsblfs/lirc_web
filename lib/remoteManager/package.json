@@ -9,6 +9,5 @@
     "keywords": [],
     "license": "MIT",
     "dependencies": {
-        "require-all": "*"
     }
 }

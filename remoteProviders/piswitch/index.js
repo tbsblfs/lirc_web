@@ -22,7 +22,7 @@ var switches = {
 exports.init = function () {
 
     var remotes = {};
-    _(switches).forEach(function (obj, key) {
+    _.forEach(switches, function (obj, key) {
         remotes[key] = _.union(_.keys(obj).map(function (x) {
             return x + " On"
         }), _.keys(obj).map(function (x) {
@@ -30,19 +30,17 @@ exports.init = function () {
         }));
     });
 
+    function logWithPrefix(prefix) {
+        return function (remote, key, cb) {
+            console.log(prefix + ": " + remote + " " + key);
+            cb();
+        };
+    }
+
     return {
         remotes: remotes,
-        sendOnce: function (a, b, cb) {
-            console.log("SEND_ONCE: " + a + " " + b);
-            cb();
-        },
-        sendStart: function (a, b, cb) {
-            console.log("SEND_START: " + a + " " + b);
-            cb();
-        },
-        sendStop: send_stop = function (a, b, cb) {
-            console.log("SEND_STOP: " + a + " " + b);
-            cb();
-        }
+        sendOnce: logWithPrefix("SEND_ONCE"),
+        sendStart: logWithPrefix("SEND_START"),
+        sendStop: logWithPrefix("SEND_STOP")
     }
 }
