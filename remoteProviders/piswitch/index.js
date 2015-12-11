@@ -20,13 +20,13 @@ var exports = module.exports = {};
 var switches = {
     "Light": {
         "Light1": {
-            "dip": "101101000"
+            "dip": "1001010000"
         },
         "Light2": {
-            "dip": "101100100"
+            "dip": "1001001000"
         },
         "Light3": {
-            "dip": "101100010"
+            "dip": "1001000100"
         },
     }
 };
@@ -34,7 +34,7 @@ var switches = {
 
 exports.init = function () {
 
-    piswitch.setup();
+    piswitch.setup({pin: 22});
 
     var remotes = {};
     var remoteFunctions = {};
