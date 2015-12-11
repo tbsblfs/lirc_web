@@ -32,7 +32,7 @@ var switches = {
 };
 
 
-exports.init = function () {
+exports.init = function (cb) {
 
     piswitch.setup({pin: 22});
 
@@ -62,7 +62,7 @@ exports.init = function () {
         };
     }
 
-    return {
+    cb( {
         remotes: remotes,
         sendOnce: function (remote, key, cb) {
             var d = remoteFunctions[remote][key];
@@ -71,5 +71,5 @@ exports.init = function () {
         },
         sendStart: logWithPrefix("SEND_START"),
         sendStop: logWithPrefix("SEND_STOP")
-    }
+    });
 }

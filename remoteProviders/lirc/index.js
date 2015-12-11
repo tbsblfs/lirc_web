@@ -14,7 +14,7 @@ if (process.env.NODE_ENV == 'test' || process.env.NODE_ENV == 'development') {
         };
     }
     lirc_node = {
-        init: function () {},
+        init: function (cb) {cb();},
         remotes: remotes,
         irsend: {
             send_once: logWithPrefix("SEND_ONCE"),
@@ -26,19 +26,19 @@ if (process.env.NODE_ENV == 'test' || process.env.NODE_ENV == 'development') {
     lirc_node = require('lirc_node');
 }
 
-exports.init = function () {
-    lirc_node.init();
-
-    return {
-        remotes: lirc_node.remotes,
-        sendStart: function(remote, key, cb) {
-            lirc_node.irsend.send_start(remote, key, cb);
-        },
-        sendStop: function(remote, key, cb) {
-            lirc_node.irsend.send_stop(remote, key, cb);
-        },
-        sendOnce: function(remote, key, cb) {
-            lirc_node.irsend.send_once(remote, key, cb);
-        }
-    }
+exports.init = function (cb) {
+    lirc_node.init(function () {
+        cb({
+            remotes: lirc_node.remotes,
+            sendStart: function (remote, key, cb) {
+                lirc_node.irsend.send_start(remote, key, cb);
+            },
+            sendStop: function (remote, key, cb) {
+                lirc_node.irsend.send_stop(remote, key, cb);
+            },
+            sendOnce: function (remote, key, cb) {
+                lirc_node.irsend.send_once(remote, key, cb);
+            }
+        });
+    });
 }
