@@ -1,20 +1,14 @@
 var request = require('request'),
     _ = require('lodash');
 
-var requests = {
-    "Test": {
-        "TestHTTP": {
-            "method": "GET",
-            "url": "http://localhost/example"
-        }
-    }
-};
 
-exports.init = function (cb) {
+exports.init = function (config, cb) {
+    if (!config.requests)
+        throw new Error("http provider: No requests defined");
 
     var remotes = {};
     var remoteFunctions = {};
-    _.forEach(requests, function (obj, remote) {
+    _.forEach(config.requests, function (obj, remote) {
         var names = remotes[remote] = [];
         var functions = remoteFunctions[remote] = {};
         _.keys(obj).forEach(function (key) {

@@ -26,7 +26,7 @@ if (process.env.NODE_ENV == 'test' || process.env.NODE_ENV == 'development') {
     lirc_node = require('lirc_node');
 }
 
-exports.init = function (cb) {
+exports.init = function (config, cb) {
     lirc_node.init(function () {
         cb({
             remotes: lirc_node.remotes,

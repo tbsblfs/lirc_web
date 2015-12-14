@@ -1,0 +1,70 @@
+{
+    "macros": {
+        "Play Xbox 360": [
+          ["lirc_SonyTV", "Power"],
+          ["lirc_SonyTV", "Xbox360"],
+          ["lirc_Yamaha", "Power"],
+          ["lirc_Yamaha", "Xbox360"],
+          ["lirc_Xbox360", "Power"]
+        ],
+        "Listen to Music": [
+          ["lirc_Yamaha", "Power"],
+          ["lirc_Yamaha", "AirPlay"]
+        ]
+    },
+    "commandLabels": {
+        "lirc_LircNamespace": {
+            "KEY_POWER": "Power",
+            "KEY_VOLUMEUP": "Vol+",
+            "KEY_VOLUMEDOWN": "Vol-",
+            "KEY_CHANNELUP": "Channel Up",
+            "KEY_CHANNELDOWN": "Channel Down"
+        }
+    },
+    "remoteLabels": {
+        "lirc_LircNamespace": "LIRC namespace"
+    },
+    "repeaters": {
+        "lirc_SonyTV": {
+            "VolumeUp": true,
+            "VolumeDown": true
+        }
+    },
+    "providers": {
+        "http": {
+            "requests": {
+                "Test": {
+                    "TestHTTP": {
+                        "method": "GET",
+                        "url": "http://localhost/example"
+                    }
+                }
+            }
+        },
+        "piswitch": {
+            "pin": 22,
+            "switches": {
+                "Light": {
+                    "Light1": {
+                        "dip": "1001010000"
+                    },
+                    "Light2": {
+                        "dip": "1001001000"
+                    },
+                    "Light3": {
+                        "dip": "1001000100"
+                    }
+                }
+            }
+        },
+        "wakeonlan": {
+            "devices": {
+                "Test": {
+                    "PC": {
+                        "mac": "12-34-56-78-9A-BC"
+                    }
+                }
+            }
+        }
+    }
+}
