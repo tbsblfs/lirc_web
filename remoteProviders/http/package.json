@@ -9,6 +9,6 @@
     "keywords": [],
     "license": "MIT",
     "dependencies": {
-        "lirc_node": "*"
+        "request": "*"
     }
 }
