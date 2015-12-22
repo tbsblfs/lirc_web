@@ -3,7 +3,7 @@ var wol = require('wake_on_lan'),
 
 exports.init = function (config, cb) {
     if(!config.devices) {
-        throw new Error("No devices defined.")
+        cb(new Error("No devices defined."));
     }
 
     var remotes = {};
@@ -24,7 +24,7 @@ exports.init = function (config, cb) {
         };
     }
 
-    cb({
+    cb(null, {
         remotes: remotes,
         sendOnce: function (remote, key, cb) {
             wol.wake(remoteFunctions[remote][key].mac, cb);

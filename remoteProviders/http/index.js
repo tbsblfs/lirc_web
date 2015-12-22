@@ -3,8 +3,10 @@ var request = require('request'),
 
 
 exports.init = function (config, cb) {
-    if (!config.requests)
-        throw new Error("http provider: No requests defined");
+    if (!config.requests) {
+        cb(new Error("http provider: No requests defined"));
+        return;
+    }
 
     var remotes = {};
     var remoteFunctions = {};
@@ -24,7 +26,7 @@ exports.init = function (config, cb) {
         };
     }
 
-    cb({
+    cb(null, {
         remotes: remotes,
         sendOnce: function (remote, key, cb) {
             request(remoteFunctions[remote][key], cb);

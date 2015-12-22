@@ -1,4 +1,4 @@
-TESTS = test/*.js
+TESTS = $(shell find . -path '**/test' ! -path '*node_modules*')
 REPORTER = dot
 
 test:
@@ -7,7 +7,7 @@ test:
 		--require test/common.js \
 		--reporter $(REPORTER) \
 		--growl \
-        --recursive \
+		--recursive \
 		$(TESTS)
 
 .PHONY: test bench

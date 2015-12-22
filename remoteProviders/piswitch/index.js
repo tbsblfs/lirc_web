@@ -6,7 +6,7 @@ var exports = module.exports = {};
 
 exports.init = function (config, cb) {
     if (!config.switches) {
-        throw new Error("No switches defined.")
+        cb(new Error("No switches defined."));
     }
 
     piswitch.setup({
@@ -39,7 +39,7 @@ exports.init = function (config, cb) {
         };
     }
 
-    cb({
+    cb(null, {
         remotes: remotes,
         sendOnce: function (remote, key, cb) {
             var d = remoteFunctions[remote][key];
