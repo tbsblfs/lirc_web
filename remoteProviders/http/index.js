@@ -19,19 +19,10 @@ exports.init = function (config, cb) {
         });
     });
 
-    function logWithPrefix(prefix) {
-        return function (remote, key, cb) {
-            console.log(prefix + ": " + remote + " " + key);
-            cb();
-        };
-    }
-
     cb(null, {
         remotes: remotes,
         sendOnce: function (remote, key, cb) {
             request(remoteFunctions[remote][key], cb);
-        },
-        sendStart: logWithPrefix("SEND_START"),
-        sendStop: logWithPrefix("SEND_STOP")
+        }
     });
 }

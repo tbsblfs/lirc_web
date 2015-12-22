@@ -1,12 +1,12 @@
 var piswitch = require('piswitch'),
     _ = require('lodash');
 
-// lirc_web configuration
 var exports = module.exports = {};
 
 exports.init = function (config, cb) {
     if (!config.switches) {
         cb(new Error("No switches defined."));
+        return;
     }
 
     piswitch.setup({
@@ -32,21 +32,12 @@ exports.init = function (config, cb) {
         });
     });
 
-    function logWithPrefix(prefix) {
-        return function (remote, key, cb) {
-            console.log(prefix + ": " + remote + " " + key);
-            cb();
-        };
-    }
-
     cb(null, {
         remotes: remotes,
         sendOnce: function (remote, key, cb) {
             var d = remoteFunctions[remote][key];
             piswitch.send(d.dip, 'dip', d.off);
             cb();
-        },
-        sendStart: logWithPrefix("SEND_START"),
-        sendStop: logWithPrefix("SEND_STOP")
+        }
     });
 }
